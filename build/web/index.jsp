@@ -13,7 +13,7 @@
     </head>
     <body>
         <form action="servlet" method="post">
-        <button type="submit" >Ir a actividad</button>            
+            <button type="submit" >Ir a actividad</button>            
         </form>
     </body>
 </html>

@@ -11,12 +11,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.Data;
 
 /**
  *
  * @author salva
  */
-public class servlet extends HttpServlet {
+public class busqueda extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +36,10 @@ public class servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet servlet</title>");            
+            out.println("<title>Servlet busqueda</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet busqueda at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,7 +57,18 @@ public class servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String parametro = request.getParameter("llave");
+        
+        Calificaciones lista = new Calificaciones();
+        
+        ArrayList ls = lista.getLista2();
+        
+        request.setAttribute("lista", lista.getLista2());
+        request.setAttribute("llave", parametro);
+        
+        RequestDispatcher view = request.getRequestDispatcher("/busqueda.jsp");
+        view.forward(request, response);
     }
 
     /**
@@ -70,16 +82,7 @@ public class servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        Calificaciones lista = new Calificaciones();
-         
-        
-        request.setAttribute("lista", lista.getLista());
-        
-        
-        RequestDispatcher view = request.getRequestDispatcher("/x.jsp");
-        view.forward(request, response);
+        processRequest(request, response);
     }
 
     /**

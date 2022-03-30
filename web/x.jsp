@@ -12,21 +12,37 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <c:if test="${requestScope.emp != null }">
+        <c:if test="${requestScope.lista != null }">
             <table style="border: 3px solid black;">
                 <tr>
-                    <td>ID</td>
-                    <td>NAME</td>
-                    <td>ROLE</td>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Apellido</td>
+                    <td>Carrera</td>
+                    <td>Salon</td>
                 </tr>
-                <c:forEach  items="${requestScope.emp}" var="x">
+                <c:forEach  items="${requestScope.lista}" var="x">
                     <tr>
-                        <td>${x.id}</td>
-                        <td>${x.nombre}</td>
-                        <td>${x.role}</td>
+                        <td> 
+                            <form action="busqueda" method="get">
+                                <button type="submit" name="llave" value="${x.nombre}">busqueda</button>
+                            </form>
+                        </td>
+                        <td>${x.nombre}</td>   
+                        <td>${x.apellido}</td>
+                        <td>${x.carrera}</td>
+                        <td>${x.salon}</td>
                     </tr>
                 </c:forEach >
             </table>
+            
+            <form action="busqueda" method="get">
+                <br>
+                <label>Ingrese el nombre de la persona que busca:</label> <br>
+                <input type="text" name="llave"><br>
+                <button type="submit">pedir</button>
+            </form>
+            
         </c:if>
     </body>
 </html>

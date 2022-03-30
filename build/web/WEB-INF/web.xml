@@ -4,9 +4,17 @@
         <servlet-name>servlet</servlet-name>
         <servlet-class>servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>busqueda</servlet-name>
+        <servlet-class>busqueda</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servlet</servlet-name>
         <url-pattern>/servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busqueda</servlet-name>
+        <url-pattern>/busqueda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
